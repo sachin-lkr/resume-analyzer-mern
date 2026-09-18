@@ -1,17 +1,20 @@
+import { Router } from "express";
+import {
+  registerUserController,
+  loginUserController,
+  logoutUserController,
+  getMeController,
+} from "../controllers/authController.js";
+import authUser from "../middlewares/authMIddlewares.js";
 
-import { Router } from 'express'
-import {registerUserController,loginUserController, logoutUserController} from "../controllers/authController.js"
+const authRouter = Router();
 
-const authRouter = Router()
+authRouter.post("/register", registerUserController);
 
+authRouter.post("/login", loginUserController);
 
-authRouter.post("/register", registerUserController)
+authRouter.get("/logout", logoutUserController);
 
-authRouter.post("/login", loginUserController)
+authRouter.get("/get-me", authUser, getMeController);
 
-authRouter.get("/logout", logoutUserController)
-
-
-
-
-export default authRouter
+export default authRouter;
