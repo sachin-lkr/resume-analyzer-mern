@@ -1,5 +1,5 @@
 
-import pdfParse from "pdf-parse"
+import {PDFParse} from "pdf-parse"
 
 import { generateInterviewReport, generateResumePdf } from "../service/aiService.js"
 
@@ -93,4 +93,4 @@ async function generateResumePdfController(req, res) {
     res.send(pdfBuffer)
 }
 
-export default { generateInterViewReportController, getInterviewReportByIdController, getAllInterviewReportsController, generateResumePdfController }
+export  { generateInterViewReportController, getInterviewReportByIdController, getAllInterviewReportsController, generateResumePdfController }

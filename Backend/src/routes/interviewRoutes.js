@@ -1,35 +1,49 @@
+import express from "express";
 
-import express from "express"
+import authUser from "../middlewares/authMIddlewares.js";
 
-import authMiddleware from "../middlewares/authMIddlewares.js"
+import {
+  generateInterViewReportController,
+  getInterviewReportByIdController,
+  getAllInterviewReportsController,
+  generateResumePdfController,
+} from "../controllers/interviewController.js";
 
-import interviewController from "../controllers/interviewController.js"
+import upload from "../middlewares/filemiddleware.js";
 
+const interviewRouter = express.Router();
 
-import upload from "../middlewares/filemiddleware.js"
+// generate new interview report on the basis of user self description,resume pdf and job description.
 
-const interviewRouter = express.Router()
-
-
-
-
- // generate new interview report on the basis of user self description,resume pdf and job description.
- 
-interviewRouter.post("/", authMiddleware.authUser, upload.single("resume"), interviewController.generateInterViewReportController)
+interviewRouter.post(
+  "/",
+  authUser,
+  upload.single("resume"),
+  generateInterViewReportController,
+);
 
 // get interview report by interviewId.
- 
-interviewRouter.get("/report/:interviewId", authMiddleware.authUser, interviewController.getInterviewReportByIdController)
 
+interviewRouter.get(
+  "/report/:interviewId",
+  authUser,
+  getInterviewReportByIdController,
+);
 
 // get all interview reports of logged in user.
 
-interviewRouter.get("/", authMiddleware.authUser, interviewController.getAllInterviewReportsController)
-
+interviewRouter.get(
+  "/",
+  authUser,
+  getAllInterviewReportsController,
+);
 
 // generate resume pdf on the basis of user self description, resume content and job description.
 
-interviewRouter.post("/resume/pdf/:interviewReportId", authMiddleware.authUser, interviewController.generateResumePdfController)
+interviewRouter.post(
+  "/resume/pdf/:interviewReportId",
+  authUser,
+  generateResumePdfController,
+);
 
-
-export default interviewRouter
+export default interviewRouter;
