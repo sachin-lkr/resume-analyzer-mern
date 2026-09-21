@@ -50,7 +50,7 @@ const Home = () => {
       <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-[0_10px_40px_rgba(99,102,241,0.08)]">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left Panel - Job Description */}
-          <div className="p-6 sm:p-8">    
+          <div className="p-6 sm:p-8">
             <div className="mb-5 flex items-center gap-3">
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#EEF2FF] text-[#6366F1]">
                 <svg

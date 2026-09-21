@@ -45,14 +45,32 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
                         Job Description: ${jobDescription}
 `
 
-    const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        contents: prompt,
-        config: {
-            responseMimeType: "application/json",
-            responseSchema: zodToJsonSchema(interviewReportSchema),
-        }
-    })
+    // const response = await ai.models.generateContent({
+    //     model: "gemini-3-flash-preview",
+    //     contents: prompt,
+    //     config: {
+    //         responseMimeType: "application/json",
+    //         responseSchema: zodToJsonSchema(interviewReportSchema),
+    //     }
+    // })
+
+//     const response = await ai.models.generateContent({
+//     model: "gemini-2.5-flash",
+//     contents: prompt,
+//     config: {
+//         responseMimeType: "application/json",
+//         responseSchema: zodToJsonSchema(interviewReportSchema),
+//     }
+// })
+
+const response = await ai.models.generateContent({
+    model: "gemini-3.6-flash",
+    contents: prompt,
+    config: {
+        responseMimeType: "application/json",
+        responseSchema: zodToJsonSchema(interviewReportSchema),
+    }
+})
 
     return JSON.parse(response.text)
 

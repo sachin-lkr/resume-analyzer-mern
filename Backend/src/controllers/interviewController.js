@@ -11,7 +11,7 @@ import interviewReportModel from "../models/interviewModel.js"
  
 async function generateInterViewReportController(req, res) {
 
-    const resumeContent = await (new pdfParse.PDFParse(Uint8Array.from(req.file.buffer))).getText()
+    const resumeContent = await (new PDFParse(Uint8Array.from(req.file.buffer))).getText()
     const { selfDescription, jobDescription } = req.body
 
     const interViewReportByAi = await generateInterviewReport({
@@ -19,9 +19,11 @@ async function generateInterViewReportController(req, res) {
         selfDescription,
         jobDescription
     })
+    console.log("AI RESPONSE:", interViewReportByAi)
 
     const interviewReport = await interviewReportModel.create({
         user: req.user.id,
+        title: interViewReportByAi.job_applied, 
         resume: resumeContent.text,
         selfDescription,
         jobDescription,
