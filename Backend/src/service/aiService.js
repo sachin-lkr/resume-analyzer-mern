@@ -36,7 +36,7 @@ const interviewReportSchema = z.object({
     title: z.string().describe("The title of the job for which the interview report is generated"),
 })
 
-async function generateInterviewReport({ resume, selfDescription, jobDescription }) {
+async function generateInterviewReport({ resume, selfDescription, jobDescription, retries = 3 }) {
 
 
     const prompt = `Generate an interview report for a candidate with the following details:
@@ -63,16 +63,35 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
 //     }
 // })
 
-const response = await ai.models.generateContent({
-    model: "gemini-3.6-flash",
-    contents: prompt,
-    config: {
-        responseMimeType: "application/json",
-        responseSchema: zodToJsonSchema(interviewReportSchema),
-    }
-})
+for (let attempt = 1; attempt <= retries; attempt++) {
+        try {
+            console.log(`Sending request to Gemini API (Attempt ${attempt}/${retries})...`);
 
-    return JSON.parse(response.text)
+            const response = await ai.models.generateContent({
+                model: "gemini-3.6-flash", // Stable & modern model name
+                contents: prompt,
+                config: {
+                    responseMimeType: "application/json",
+                    responseSchema: zodToJsonSchema(interviewReportSchema),
+                }
+            });
+
+            // Success:  response json data return
+            return JSON.parse(response.text);
+
+        } catch (error) {
+            console.error(`Attempt ${attempt} failed with error:`, error.message);
+
+            // Agar aakhri attempt bhi fail ho jaye, toh error throw karein
+            if (attempt === retries) {
+                throw new Error(`Failed to generate interview report after ${retries} attempts: ${error.message}`);
+            }
+
+            // Retry karne se pehle 2 seconds wait karein (Exponential / Simple delay)
+            console.log("Waiting 2 seconds before retrying...");
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+        }
+    }
 
 
 }

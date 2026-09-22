@@ -154,7 +154,7 @@ const Interview = () => {
       getReportById(interviewId);
     }
   }, [interviewId]);
-
+  console.log("reports" ,report)
   if (loading || !report) {
     return (
       <main className="min-h-screen flex flex-col items-center justify-center">
@@ -306,7 +306,7 @@ const Interview = () => {
                 }`}
               >
                 <span className="text-4xl font-bold text-[#0F172A]">
-                  {report.matchScore}
+                  {report.match_score}
                 </span>
 
                 <span className="text-sm font-semibold text-[#64748B]">%</span>

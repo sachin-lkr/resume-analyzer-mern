@@ -11,7 +11,8 @@ import interviewReportModel from "../models/interviewModel.js"
  
 async function generateInterViewReportController(req, res) {
 
-    const resumeContent = await (new PDFParse(Uint8Array.from(req.file.buffer))).getText()
+   try {
+     const resumeContent = await (new PDFParse(Uint8Array.from(req.file.buffer))).getText()
     const { selfDescription, jobDescription } = req.body
 
     const interViewReportByAi = await generateInterviewReport({
@@ -23,7 +24,7 @@ async function generateInterViewReportController(req, res) {
 
     const interviewReport = await interviewReportModel.create({
         user: req.user.id,
-        title: interViewReportByAi.job_applied, 
+        title: interViewReportByAi.applied_position || jobDescription || "Interview Report", 
         resume: resumeContent.text,
         selfDescription,
         jobDescription,
@@ -34,6 +35,10 @@ async function generateInterViewReportController(req, res) {
         message: "Interview report generated successfully.",
         interviewReport
     })
+   } catch (error) {
+    console.error("Error generating report:", error);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+   }
 
 }
 
