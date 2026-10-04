@@ -306,7 +306,7 @@ const Interview = () => {
                 }`}
               >
                 <span className="text-4xl font-bold text-[#0F172A]">
-                  {report.match_score}
+                  {report.matchScore}
                 </span>
 
                 <span className="text-sm font-semibold text-[#64748B]">%</span>

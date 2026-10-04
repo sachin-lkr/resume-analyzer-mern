@@ -24,11 +24,10 @@ async function generateInterViewReportController(req, res) {
 
     const interviewReport = await interviewReportModel.create({
         user: req.user.id,
-        title: interViewReportByAi.applied_position || jobDescription || "Interview Report", 
         resume: resumeContent.text,
         selfDescription,
         jobDescription,
-        ...interViewReportByAi
+        ...interViewReportByAi 
     })
 
     res.status(201).json({
