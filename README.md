@@ -1,6 +1,11 @@
 # 🚀 Resume Analyzer & AI Job Preparation Platform
 
-A production-ready Full Stack Gen AI Web Application built to help job seekers optimize their resumes, analyze skill gaps, and prepare for interviews using AI.
+A production-ready Full Stack Gen AI Web Application designed to supercharge your job preparation. Simply input a Target Job Description, Resume, and Quick Self-Description to receive:
+
+- **📊 ATS Match Score & Skill Gap Analysis
+- **🎯 Tailored Technical & Behavioral Interview Questions
+- **🗓️ Custom 5-Day Preparation Roadmap
+- **📄 AI-Generated ATS Resume (Available for instant PDF download)
 
 ---
 
