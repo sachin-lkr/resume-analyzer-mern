@@ -8,7 +8,7 @@ import interviewRouter from "./routes/interviewRoutes.js";
 const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://resume-analyzer-mern-mmk5apqwd-sachin-lkrs-projects.vercel.app",
+  "https://resume-analyzer-mern-sepia.vercel.app",
 ];
 
 app.use(cookieParser());
