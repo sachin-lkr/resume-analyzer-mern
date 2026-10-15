@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useInterview } from "../hooks/useInterview.js";
 import { useNavigate, useParams } from "react-router";
+import LogoutButton from "../../auth/components/LogoutButton.jsx"
 
 const NAV_ITEMS = [
   {
@@ -177,6 +178,9 @@ const Interview = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F8FAFF] to-[#EEF2FF] p-4 sm:p-6 lg:p-8">
+   <div className="fixed bottom-4 right-4 z-50">
+ 
+</div>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row bg-white border border-[#E2E8F0] rounded-2xl shadow-lg overflow-hidden min-h-[650px]">
           {/* Left Nav */}
@@ -320,7 +324,7 @@ const Interview = () => {
             <div className="my-7 border-t border-[#E2E8F0]" />
 
             {/* Skill Gaps */}
-            <div>
+            <div className="flex flex-col  mt-auto pt-6 ">
               <p className="text-xs font-semibold uppercase tracking-wider text-[#64748B] mb-4">
                 Skill Gaps
               </p>
@@ -341,7 +345,12 @@ const Interview = () => {
                   </span>
                 ))}
               </div>
+              <div className="flex justify-center">
+                 <LogoutButton/>
+              </div>
+              
             </div>
+          
           </aside>
         </div>
       </div>

@@ -19,7 +19,7 @@ const Login = () => {
   };
 
   // Loading UI
-if (loading) {
+ if (loading) {
   return (
     <main className="min-h-screen flex items-center justify-center">
       <div className="h-48 w-48 animate-spin rounded-full border-4 border-[#E2E8F0] border-t-[#6366F1] border-r-[#8B5CF6]"></div>
@@ -28,32 +28,63 @@ if (loading) {
 }
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 py-10">
-      
-      {/* Login Card */}
-      <div className="w-full max-w-md rounded-3xl border border-[#E2E8F0] bg-white p-8 shadow-xl shadow-[#6366F1]/10">
-
-        {/* Header */}
-        <div className="mb-8 text-center">
-          
-          {/* Icon */}
-          <div className="mx-auto mb-4 flex p-2 items-center justify-center rounded-2xl  from-[#6366F1] to-[#8B5CF6] shadow-lg shadow-[#6366F1]/20">
-            <span className="text-4xl  font-bold text-[#0F172A]">
-              Login
-            </span>
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#F8FAFF] to-[#EEF2FF] px-4 py-10 lg:px-20">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        {/* Left Side: Product Branding & Features (Visible on Desktop) */}
+        <div className="hidden lg:flex flex-col justify-center space-y-6 pr-6">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#EEF2FF] px-3.5 py-1.5 text-xs font-semibold text-[#6366F1] w-fit border border-indigo-100">
+            <span className="flex h-2 w-2 rounded-full bg-[#6366F1] animate-pulse"></span>
+            AI-Powered Career & Interview Platform
           </div>
 
-          <h1 className="text-3xl font-bold tracking-tight text-[#0F172A]">
-            Welcome Back
+          <h1 className="text-4xl xl:text-5xl font-bold tracking-tight text-[#0F172A] leading-tight">
+            Master Your Next Role with{" "}
+            <span className="bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] bg-clip-text text-transparent">
+              AI Intelligence
+            </span>
           </h1>
 
-          <p className="mt-2 text-sm text-[#64748B]">
-            Login to continue your AI-powered interview preparation
+          <p className="text-base text-[#64748B] leading-relaxed">
+            Upload your resume, analyze it against target job descriptions,
+            uncover critical skill gaps, and get a tailored interview strategy
+            and preparation roadmap instantly.
           </p>
+
+          {/* Feature Highlight Cards */}
+          <div className="grid grid-cols-2 gap-4 pt-2">
+            <div className="rounded-2xl border border-[#E2E8F0] bg-white p-4 shadow-sm transition hover:shadow-md">
+              <div className="font-semibold text-[#0F172A] text-sm mb-1 flex items-center gap-2">
+                <span>🎯</span> JD & Resume Match
+              </div>
+              <p className="text-xs text-[#64748B]">
+                Get exact match scores and critical skill gap insights.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-[#E2E8F0] bg-white p-4 shadow-sm transition hover:shadow-md">
+              <div className="font-semibold text-[#0F172A] text-sm mb-1 flex items-center gap-2">
+                <span>🚀</span> Custom Roadmaps
+              </div>
+              <p className="text-xs text-[#64748B]">
+                Personalized interview questions and prep roadmap.
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
+        {/* Right Side: Login Form Card */}
+        <div className="w-full max-w-md mx-auto rounded-3xl border border-[#E2E8F0] bg-white p-8 shadow-xl shadow-[#6366F1]/10">
+          {/* Header */}
+          <div className="mb-8 text-center lg:text-left">
+            <h2 className="text-3xl font-bold tracking-tight text-[#0F172A]">
+              Welcome Back
+            </h2>
+
+            <p className="mt-2 text-sm text-[#64748B]">
+              Login to continue your AI-powered interview preparation
+            </p>
+          </div>
+            <form onSubmit={handleSubmit} className="space-y-5">
 
           {/* Email */}
           <div>
@@ -106,7 +137,7 @@ if (loading) {
           </button>
         </form>
 
-        {/* Register Link */}
+            {/* Register Link */}
         <p className="mt-6 text-center text-sm text-[#64748B]">
           Don't have an account?{" "}
           <Link
@@ -116,7 +147,7 @@ if (loading) {
             Register
           </Link>
         </p>
-
+        </div>
       </div>
     </main>
   );

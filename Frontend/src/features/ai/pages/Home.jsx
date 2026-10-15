@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
+import axios from "axios";
 
 import { useInterview } from "../hooks/useInterview.js";
 import { useNavigate } from "react-router";
+import LogoutButton from "../../auth/components/LogoutButton.jsx";
 
 const Home = () => {
   const { loading, generateReport, reports } = useInterview();
@@ -19,7 +21,9 @@ const Home = () => {
       resumeFile,
     });
     navigate(`/interview/${data._id}`);
-  };
+  };  
+
+  
 
   if (loading) {
     return (
@@ -31,6 +35,12 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F8FAFF] to-[#EEF2FF] px-4 py-10 sm:px-6 lg:px-10">
+   
+      
+      <div className="fixed bottom-4 right-4 md:top-4 md:bottom-auto md:right-4 z-50">
+       <LogoutButton/>
+      </div>
+      
       {/* Page Header */}
       <header className="mx-auto mb-8 max-w-6xl text-center">
         <h1 className="text-3xl font-bold tracking-tight text-[#0F172A] sm:text-4xl">
