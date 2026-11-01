@@ -108,11 +108,16 @@ cd resume-analyzer-mern
 ## Start the backend development server:
 - npm run dev
 
-### **2. Frontend Setup
+### **3. Frontend Setup
 - cd ../Frontend
 - npm install
 ## Start the frontend Vite application:
 - npm run dev
 ## 👨‍💻 Author
-- Sachin Kumar
-- GitHub: @sachin-lkr
+
+**Sachin Kumar**  
+*Full-Stack JavaScript & MERN Stack Developer*
+
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?style=flat&logo=github)](https://github.com/sachin-lkr)  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/sachin-kumar-bind/)  
+[![Email](https://img.shields.io/badge/Email-Contact-red?style=flat&logo=gmail)](mailto:sachin9973083181@gmail.com)
